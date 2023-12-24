@@ -70,6 +70,15 @@ mkdir wordpress
 
 See the directories for the added manifests.
 
+### Create a secret for the wordpress application
+
+
+```sh
+kubectl create ns wordpress 
+
+kubectl -n wordpress create secret generic wordpress-secret --from-literal password=password123 --from-literal username=collins
+```
+
 ### Apply the directories to the kubernetes cluster
 
 ```yaml
@@ -89,7 +98,7 @@ git init
 git remote add origin https://github.com/cafanwi/argocd.git
 ```
 
-### Create a Girhub Personal access token
+### Create a Github Personal access token
 
 xxxxxxxx
 
@@ -99,12 +108,5 @@ Click: Settings --> Repositories --> connect VIA HTTPS
 - under username, enter your Github username
 - underpassword, enter the access token from Github
 
----
-
-https://www.arthurkoziel.com/setting-up-argocd-with-helm/
-
-<!-- 
-kubectl -n wordpress create secret generic wordpress-secret --from-literal password=password123 --from-literal username=collins --dry-run=client -o yaml  -->
 
 
-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
