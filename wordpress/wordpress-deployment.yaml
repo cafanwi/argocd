@@ -21,8 +21,6 @@ spec:
       containers:
       - image: mysql:8.2
         name: mysql
-        imagePullSecrets:
-        - name: cafanwii-dockerhub-secret
         env:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
