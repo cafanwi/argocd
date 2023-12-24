@@ -109,4 +109,53 @@ Click: Settings --> Repositories --> connect VIA HTTPS
 - underpassword, enter the access token from Github
 
 
+## IMPlementing Helm
 
+### Manually pull the helm charts
+
+```sh
+helm repo ls longhorn
+helm pull longhorn/longhorn --untar=true
+```
+
+argoCD
+└── argo-application
+    ├── longhorn.yaml
+└── longhorn-helm
+    ├── kustomization.yaml
+    ├── values.yaml
+    └── longhorn
+        ├── charts
+        ├── templates
+        └── Chart.yaml
+
+# longhorn.yaml
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: longhorn
+  namespace: argocd
+spec:
+  destination:
+    name: ''
+    namespace: argocd
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    path: longhorn
+    repoURL: 'https://github.com/cafanwi/argocd.git'
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+```
+
+## kustomization.yaml
+
+```yaml
+resources:
+  - longhorn-helm/longhorn
+```
