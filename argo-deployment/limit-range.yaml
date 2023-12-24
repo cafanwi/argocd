@@ -10,4 +10,3 @@ spec:
     min:
       cpu: "200m"
     type: Container
-    #all

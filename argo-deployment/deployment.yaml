@@ -19,10 +19,10 @@ spec:
         app: argo-deployment
     spec:
       containers:
-      - image: nginx
+      - image: nginx:1.14.2
         name: nginx
         ports:
         - containerPort: 80
         resources: {}
 status: {}
-#all
+
