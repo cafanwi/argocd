@@ -21,6 +21,8 @@ spec:
       containers:
       - image: nginx:1.14.2
         name: nginx
+        imagePullSecrets:
+        - name: cafanwii-dockerhub-secret
         ports:
         - containerPort: 80
         resources: {}
